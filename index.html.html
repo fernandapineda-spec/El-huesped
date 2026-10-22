@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuestionario "El huésped" - Amparo Dávila</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fuentes de Google: Inter y Cinzel para estética gótica legible -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            cinzel: ['Cinzel', 'serif'],
+          },
+          colors: {
+            gothic: {
+              950: '#090d16',
+              900: '#111827',
+              850: '#161f32',
+              800: '#1f293d',
+              700: '#334155',
+              amber: '#d97706',
+              crimson: '#9f1239',
+              gold: '#f59e0b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Transiciones suaves y deshabilitar selección de texto durante la prueba para seguridad */
+    .unselectable {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d97706;
+    }
+  </style>
+</head>
+<body class="bg-gothic-950 text-slate-100 min-h-screen font-sans antialiased flex flex-col justify-between selection:bg-amber-500/30">
+
+  <!-- ENCABEZADO SUPERIOR / NAVBAR -->
+  <header class="border-b border-slate-800 bg-gothic-900/80 backdrop-blur sticky top-0 z-30 px-4 py-3">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="font-cinzel font-bold text-base sm:text-lg text-slate-100 tracking-wide">El huésped</h1>
+          <p class="text-xs text-amber-500/90 font-medium">Amparo Dávila • Comprensión Lectora 7° Básico</p>
+        </div>
+      </div>
+
+      <!-- Configuración del Profesor (URL de Web App Google Sheets) -->
+      <button onclick="toggleConfigModal()" class="text-slate-400 hover:text-amber-400 p-2 rounded-lg hover:bg-slate-800/60 transition flex items-center space-x-1 text-xs" title="Configurar URL de Google Sheets">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <span class="hidden sm:inline">Google Sheets</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="max-w-4xl w-full mx-auto p-4 sm:p-6 flex-grow flex items-center justify-center">
+
+    <!-- 1. PANTALLA DE INICIO -->
+    <div id="welcome-screen" class="w-full bg-gothic-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6">
+      <div class="text-center space-y-2 border-b border-slate-800 pb-5">
+        <span class="inline-block px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-semibold rounded-full uppercase tracking-wider">
+          Evaluación Sumativa
+        </span>
+        <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-slate-100">Cuestionario "El huésped"</h2>
+        <p class="text-slate-400 text-sm max-w-lg mx-auto">
+          Responde atentamente las 20 preguntas seleccionadas. Dispones de un único intento.
+        </p>
+      </div>
+
+      <!-- Formulario del Estudiante -->
+      <form id="student-form" onsubmit="startQuiz(event)" class="space-y-4 max-w-md mx-auto">
+        <div>
+          <label for="student-name" class="block text-xs font-semibold uppercase text-slate-300 mb-1">Nombre</label>
+          <input type="text" id="student-name" required placeholder="Ej. Camila" class="w-full bg-gothic-950 border border-slate-700 focus:border-amber-500 rounded-xl px-4 py-2.5 text-slate-100 placeholder-slate-500 outline-none transition text-sm">
+        </div>
+
+        <div>
+          <label for="student-lastname" class="block text-xs font-semibold uppercase text-slate-300 mb-1">Apellido</label>
+          <input type="text" id="student-lastname" required placeholder="Ej. Morales" class="w-full bg-gothic-950 border border-slate-700 focus:border-amber-500 rounded-xl px-4 py-2.5 text-slate-100 placeholder-slate-500 outline-none transition text-sm">
+        </div>
+
+        <div>
+          <label for="student-course" class="block text-xs font-semibold uppercase text-slate-300 mb-1">Curso</label>
+          <select id="student-course" required class="w-full bg-gothic-950 border border-slate-700 focus:border-amber-500 rounded-xl px-4 py-2.5 text-slate-100 outline-none transition text-sm">
+            <option value="" disabled selected>Selecciona tu curso...</option>
+            <option value="7°A">7°A</option>
+            <option value="7°B">7°B</option>
+            <option value="7°C">7°C</option>
+          </select>
+        </div>
+
+        <!-- Reglas y Alertas Importantes -->
+        <div class="bg-rose-950/40 border border-rose-800/50 rounded-xl p-4 space-y-2 text-xs text-rose-200">
+          <div class="flex items-start space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-rose-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <div>
+              <p class="font-bold text-rose-300 uppercase">Regla de Seguridad Anti-Copia:</p>
+              <p class="mt-0.5 leading-relaxed text-slate-300">
+                Está strictly prohibido cambiar de pestaña, salir del navegador o minimizar la pantalla durante la prueba. Si lo haces, <strong class="text-rose-400">la evaluación se bloqueará automáticamente</strong> y el incidente quedará registrado.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-bold py-3 px-6 rounded-xl shadow-lg transition transform active:scale-95 text-sm uppercase tracking-wider flex items-center justify-center space-x-2">
+          <span>Comenzar Cuestionario</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- 2. PANTALLA DE EVALUACIÓN (CUESTIONARIO) -->
+    <div id="quiz-screen" class="hidden w-full unselectable space-y-5">
+      <!-- Barra Superior de Progreso e Información -->
+      <div class="bg-gothic-900 border border-slate-800 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg">
+        <div class="flex items-center space-x-3 w-full sm:w-auto">
+          <div class="bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 text-xs text-slate-300 font-medium">
+            Estudiante: <span id="quiz-student-display" class="text-amber-400 font-bold">---</span>
+          </div>
+          <div id="category-badge" class="px-3 py-1.5 rounded-lg border text-xs font-semibold uppercase tracking-wider">
+            ---
+          </div>
+        </div>
+
+        <!-- Indicador de Preguntas y Monitoreo -->
+        <div class="flex items-center justify-between sm:justify-end w-full sm:w-auto space-x-4">
+          <span class="text-xs font-bold text-slate-300">
+            Pregunta <span id="current-q-num" class="text-amber-400 text-base">1</span> de <span class="text-slate-400">20</span>
+          </span>
+          <div class="flex items-center space-x-1.5 bg-emerald-950/60 border border-emerald-800/60 px-2.5 py-1 rounded-full text-[11px] text-emerald-300 font-medium">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Monitoreo Activo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Progreso Visual -->
+      <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden border border-slate-800">
+        <div id="progress-bar-fill" class="bg-amber-500 h-full transition-all duration-300" style="width: 5%"></div>
+      </div>
+
+      <!-- Tarjeta de Pregunta -->
+      <div class="bg-gothic-900 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-xl space-y-6">
+        
+        <!-- Cita / Fragmento Textual (Solo para preguntas de Localización) -->
+        <div id="quote-container" class="hidden bg-gothic-950 border-l-4 border-amber-500/80 p-4 rounded-r-xl text-slate-300 text-sm italic leading-relaxed shadow-inner">
+          <p id="quote-text">«...»</p>
+        </div>
+
+        <!-- Enunciado de la Pregunta -->
+        <h3 id="question-text" class="text-base sm:text-lg font-semibold text-slate-100 leading-snug">
+          Cargando pregunta...
+        </h3>
+
+        <!-- Opciones de Respuesta -->
+        <div id="options-container" class="grid grid-cols-1 gap-3 pt-2">
+          <!-- Se generan dinámicamente -->
+        </div>
+      </div>
+
+      <!-- Navegador Inferior de Preguntas -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-gothic-900 border border-slate-800 rounded-2xl p-4 shadow-lg">
+        <button id="btn-prev" onclick="navigateQuestion(-1)" class="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium px-4 py-2.5 rounded-xl transition text-xs uppercase tracking-wider flex items-center justify-center space-x-1 disabled:opacity-40 disabled:cursor-not-allowed">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span>Anterior</span>
+        </button>
+
+        <!-- Cuadrícula Rápida de Estado (1 al 20) -->
+        <div id="question-grid" class="flex flex-wrap justify-center gap-1.5 max-w-xs sm:max-w-md">
+          <!-- Botones del 1 al 20 -->
+        </div>
+
+        <button id="btn-next" onclick="navigateQuestion(1)" class="w-full sm:w-auto bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition text-xs uppercase tracking-wider flex items-center justify-center space-x-1">
+          <span id="btn-next-text">Siguiente</span>
+          <svg id="btn-next-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- 3. PANTALLA DE PANTALLA BLOQUEADA (ANTI-COPIA) -->
+    <div id="blocked-screen" class="hidden w-full bg-rose-950/90 border-2 border-rose-600 rounded-2xl p-6 sm:p-8 shadow-2xl text-center space-y-6">
+      <div class="w-16 h-16 bg-rose-900/80 border-2 border-rose-500 rounded-full flex items-center justify-center mx-auto text-rose-200 shadow-lg animate-bounce">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      </div>
+
+      <div class="space-y-2">
+        <h2 class="font-cinzel text-2xl sm:text-3xl font-extrabold text-rose-100 uppercase tracking-wide">
+          Evaluación Bloqueada
+        </h2>
+        <p class="text-rose-200 font-semibold text-sm max-w-md mx-auto">
+          Se ha detectado salida de la pestaña o minimización del navegador durante el examen.
+        </p>
+      </div>
+
+      <div class="bg-gothic-950/80 border border-rose-800/60 rounded-xl p-4 max-w-md mx-auto text-left text-xs space-y-2 text-slate-300">
+        <p><strong class="text-rose-300">Estudiante:</strong> <span id="blocked-student-name">---</span></p>
+        <p><strong class="text-rose-300">Curso:</strong> <span id="blocked-student-course">---</span></p>
+        <p><strong class="text-rose-300">Estado:</strong> <span class="text-rose-400 font-bold">BLOQUEADO (Salió del examen)</span></p>
+        <p><strong class="text-rose-300">Preguntas respondidas hasta el incidente:</strong> <span id="blocked-answered-count">0</span> / 20</p>
+        <p><strong class="text-rose-300">Nota otorgada por respuestas guardadas:</strong> <span id="blocked-grade" class="text-rose-400 font-bold text-sm">---</span></p>
+      </div>
+
+      <p class="text-xs text-rose-300 italic">
+        Esta incidencia ha sido registrada automáticamente y enviada a la planilla del profesor.
+      </p>
+    </div>
+
+    <!-- 4. PANTALLA DE RESULTADOS (FINALIZADO) -->
+    <div id="results-screen" class="hidden w-full bg-gothic-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6">
+      <div class="text-center space-y-2 border-b border-slate-800 pb-5">
+        <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/30 rounded-full flex items-center justify-center mx-auto text-amber-400 mb-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h2 class="font-cinzel text-2xl font-bold text-slate-100">Evaluación Completada</h2>
+        <p class="text-slate-400 text-xs">Tus respuestas han sido procesadas con éxito.</p>
+      </div>
+
+      <!-- Resumen del Resultado -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-lg mx-auto">
+        <div class="bg-gothic-950 border border-slate-800 rounded-xl p-4 text-center">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Estudiante</span>
+          <span id="res-student-name" class="text-xs font-semibold text-slate-200 block truncate">---</span>
+          <span id="res-student-course" class="text-[11px] text-amber-500 font-bold block mt-0.5">---</span>
+        </div>
+
+        <div class="bg-gothic-950 border border-slate-800 rounded-xl p-4 text-center">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Puntaje Obtenido</span>
+          <span class="text-xl font-black text-amber-400 block"><span id="res-score">0</span> / 20</span>
+          <span class="text-[10px] text-slate-400 block mt-0.5">puntos correctos</span>
+        </div>
+
+        <div class="bg-gothic-950 border border-slate-800 rounded-xl p-4 text-center">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Nota Final</span>
+          <span id="res-grade" class="text-2xl font-extrabold text-amber-400 block">---</span>
+          <span class="text-[10px] text-emerald-400 font-semibold block mt-0.5">Escala Oficial</span>
+        </div>
+      </div>
+
+      <!-- Tabla de Escala Oficial para Consulta -->
+      <div class="border border-slate-800 rounded-xl p-4 bg-gothic-950 space-y-3">
+        <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider text-center">Tabla de Equivalencia de Notas (0 a 20 pts)</h4>
+        <div id="scale-table-grid" class="grid grid-cols-4 sm:grid-cols-7 gap-1 text-center text-[11px]">
+          <!-- Se puebla por JS -->
+        </div>
+      </div>
+
+      <div class="bg-slate-800/40 border border-slate-700/50 rounded-xl p-3 text-center text-xs text-slate-400 space-y-1">
+        <p class="font-medium text-slate-300">🔒 Información de confidencialidad</p>
+        <p>Por motivos de seguridad pedagógica y equidad entre cursos, no se muestran las respuestas correctas específicas.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="border-t border-slate-800 py-3 text-center text-xs text-slate-500">
+    <p>Cuestionario de Comprensión Lectora • Lenguaje y Comunicación 7° Básico</p>
+  </footer>
+
+  <!-- MODAL DE CONFIGURACIÓN DEL PROFESOR (GOOGLE SHEETS WEB APP) -->
+  <div id="config-modal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-gothic-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="font-bold text-slate-100 text-sm flex items-center space-x-2">
+          <span>Configuración Google Sheets</span>
+        </h3>
+        <button onclick="toggleConfigModal()" class="text-slate-400 hover:text-slate-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-400 leading-relaxed">
+        Pega la URL de tu script desplegado en Google Apps Script (Web App) para recibir los resultados automáticamente en tiempo real.
+      </p>
+
+      <div>
+        <label for="script-url-input" class="block text-xs font-semibold text-slate-300 mb-1">SCRIPT_URL (Web App Google Apps Script)</label>
+        <input type="text" id="script-url-input" placeholder="https://script.google.com/macros/s/.../exec" class="w-full bg-gothic-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 placeholder-slate-600 outline-none focus:border-amber-500">
+      </div>
+
+      <div class="flex justify-end space-x-2 pt-2">
+        <button onclick="toggleConfigModal()" class="px-4 py-2 bg-slate-800 text-slate-300 hover:bg-slate-700 rounded-xl text-xs font-medium">Cancelar</button>
+        <button onclick="saveConfigUrl()" class="px-4 py-2 bg-amber-600 text-slate-950 font-bold hover:bg-amber-500 rounded-xl text-xs">Guardar URL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT CON LÓGICA COMPLETA DEL CUESTIONARIO -->
+  <script>
+    /* ==========================================================================
+       1. ESCALA OFICIAL DE EVALUACIÓN (0 a 20 Puntos)
+       ========================================================================== */
+    const GRADE_SCALE = {
+      0: "2.0",
+      1: "2.2",
+      2: "2.3",
+      3: "2.5",
+      4: "2.7",
+      5: "2.8",
+      6: "3.0",
+      7: "3.2",
+      8: "3.3",
+      9: "3.5",
+      10: "3.7",
+      11: "3.8",
+      12: "4.0",
+      13: "4.4",
+      14: "4.8",
+      15: "5.1",
+      16: "5.5",
+      17: "5.9",
+      18: "6.3",
+      19: "6.6",
+      20: "7.0"
+    };
+
+    /* Variable global para Google Apps Script */
+    let SCRIPT_URL = localStorage.getItem('GUEST_QUIZ_SCRIPT_URL') || "https://script.google.com/macros/s/AKfycbxBzfoyITufTGKnybZTQ_1MdUQDyQUPfhmvsV12seQ_UInC3krviZ_iqIOreYt5uIXO/exec";
+
+    /* ==========================================================================
+       2. BANCO DE 30 PREGUNTAS
+       ========================================================================== */
+    
+    // I. LOCALIZACIÓN DE INFORMACIÓN (8 preguntas con fragmento)
+    const LOCALIZACION_QUESTIONS = [
+      {
+        id: "L1",
+        category: "LOCALIZACIÓN",
+        quote: "«Llevábamos entonces cerca de tres años de matrimonio, teníamos dos niños y yo no era feliz.»",
+        text: "¿Cuántos hijos tenían la protagonista y su esposo al momento de comenzar el relato?",
+        options: [
+          "Tenían dos niños pequeños.",
+          "Tenían un solo hijo recién nacido.",
+          "Tenían tres niños en edad escolar.",
+          "No tenían ningún hijo todavía."
+        ],
+        correct: 0
+      },
+      {
+        id: "L2",
+        category: "LOCALIZACIÓN",
+        quote: "«Vivíamos en un pueblo pequeño, incomunicado y distante de la ciudad. Un pueblo casi muerto o a punto de desaparecer.»",
+        text: "¿Cómo se describe el lugar donde habitaba la familia al inicio de la historia?",
+        options: [
+          "Un pueblo pequeño, aislado y distante de la ciudad.",
+          "Un pueblo grande, muy turístico y concurrido.",
+          "Un pueblo comercial con intensa actividad económica.",
+          "Un pueblo moderno ubicado cerca de la capital."
+        ],
+        correct: 0
+      },
+      {
+        id: "L3",
+        category: "LOCALIZACIÓN",
+        quote: "«Desde el primer día mi marido le asignó el cuarto de la esquina. Era ésta una pieza grande, pero húmeda y oscura.»",
+        text: "¿Qué espacio de la casona se le otorgó al huésped por decisión del esposo?",
+        options: [
+          "El cuarto de la esquina.",
+          "El cuarto del corredor principal.",
+          "El cuarto contiguo a la cocina.",
+          "El cuarto de la entrada de la casa."
+        ],
+        correct: 0
+      },
+      {
+        id: "L4",
+        category: "LOCALIZACIÓN",
+        quote: "«Toda su alimentación se reducía a carne, no probaba nada más.»",
+        text: "¿De qué se alimentaba exclusivamente el huésped dentro de la casona?",
+        options: [
+          "Únicamente de carne.",
+          "De verduras y frutas del jardín.",
+          "De pan y agua de la cocina.",
+          "De sopas hechas por Guadalupe."
+        ],
+        correct: 0
+      },
+      {
+        id: "L5",
+        category: "LOCALIZACIÓN",
+        quote: "«Guadalupe había salido a la compra y dejó al pequeño Martín dormido en un cajón donde lo acostaba durante el día.»",
+        text: "¿Dónde dormía el pequeño Martín durante el día mientras su madre trabajaba?",
+        options: [
+          "En un cajón acondicionado.",
+          "En una cuna de madera.",
+          "En la cama de la protagonista.",
+          "En un sillón del corredor."
+        ],
+        correct: 0
+      },
+      {
+        id: "L6",
+        category: "LOCALIZACIÓN",
+        quote: "«Mi marido partió para la ciudad a arreglar unos negocios. Tardaría en regresar, según me dijo, unos veinte días.»",
+        text: "¿Cuánto tiempo estimó el esposo que duraría su viaje de negocios a la ciudad?",
+        options: [
+          "Cerca de veinte días.",
+          "Únicamente tres días.",
+          "Alrededor de dos meses.",
+          "Todo un fin de semana."
+        ],
+        correct: 0
+      },
+      {
+        id: "L7",
+        category: "LOCALIZACIÓN",
+        quote: "«Guadalupe cortó varias tablas, grandes y resistentes, mientras yo buscaba martillo y clavos.»",
+        text: "¿Qué elementos buscó la protagonista para colaborar en el encierro del huésped?",
+        options: [
+          "Martillo y clavos.",
+          "Cadenas y candados.",
+          "Cuerdas y hachas.",
+          "Ladrillos y cemento."
+        ],
+        correct: 0
+      },
+      {
+        id: "L8",
+        category: "LOCALIZACIÓN",
+        quote: "«Su resistencia fue mucha, creo que vivió cerca de dos semanas...»",
+        text: "¿Cuánto tiempo logró resistir con vida el huésped dentro del cuarto clausurado?",
+        options: [
+          "Alrededor de dos semanas.",
+          "Solamente dos o tres días.",
+          "Casi tres meses enteros.",
+          "Un mes y medio aproximado."
+        ],
+        correct: 0
+      }
+    ];
+
+    // II. INTERPRETACIÓN (14 preguntas)
+    const INTERPRETACION_QUESTIONS = [
+      {
+        id: "I9",
+        category: "INTERPRETACIÓN",
+        text: "Al afirmar la protagonista que para su marido ella representaba «algo así como un mueble», ¿qué busca transmitir esta metáfora?",
+        options: [
+          "Invisibilidad, cosificación y falta de afecto.",
+          "Estabilidad emocional y gran tranquilidad.",
+          "Inseguridad financiera y agresividad mutua.",
+          "Exclusividad en el trato y estatus elevado."
+        ],
+        correct: 0
+      },
+      {
+        id: "I10",
+        category: "INTERPRETACIÓN",
+        text: "En la frase «Era lúgubre, siniestro», ¿qué opción sustituye adecuadamente a la palabra «lúgubre» según el contexto?",
+        options: [
+          "Sombrío.",
+          "Luminoso.",
+          "Extravagante.",
+          "Pintoresco."
+        ],
+        correct: 0
+      },
+      {
+        id: "I11",
+        category: "INTERPRETACIÓN",
+        text: "¿Por qué la presencia del huésped transforma radicalmente la rutina en la casona?",
+        options: [
+          "Porque genera un ambiente constante de terror, acoso e inseguridad.",
+          "Porque exige atención médica constante y alimentos muy costosos.",
+          "Porque destruye a propósito las habitaciones y la estructura de la casa.",
+          "Porque obliga a los habitantes a abandonar el pueblo de inmediato."
+        ],
+        correct: 0
+      },
+      {
+        id: "I12",
+        category: "INTERPRETACIÓN",
+        text: "¿Qué simboliza el cuidado del jardín con flores para la protagonista en medio de su hogar sofocante?",
+        options: [
+          "Un espacio de refugio personal, paz y desconexión de su sufrimiento.",
+          "Una tarea pesada impuesta por su esposo que le causaba amargura.",
+          "Un pasatiempo irrelevante que realizaba únicamente por aburrimiento.",
+          "Un proyecto comercial para vender arreglos florales en el pueblo."
+        ],
+        correct: 0
+      },
+      {
+        id: "I13",
+        category: "INTERPRETACIÓN",
+        text: "¿Por qué la protagonista y Guadalupe evitan decir el nombre del visitante y lo llaman únicamente «él»?",
+        options: [
+          "Porque sienten que al nombrarlo lo hacen aún más aterrador.",
+          "Porque desconocen la pronunciación correcta de su nombre real.",
+          "Porque intentan demostrarle un trato de respeto y solemnidad.",
+          "Porque es una clave secreta para evitar que el esposo las descubra."
+        ],
+        correct: 0
+      },
+      {
+        id: "I14",
+        category: "INTERPRETACIÓN",
+        text: "¿Qué demuestra la reacción de la protagonista al arrojarle la lámpara de gasolina al huésped cuando irrumpe en su alcoba?",
+        options: [
+          "Un límite extremo de pánico e instinto desesperado de protección.",
+          "Un plan cuidadosamente calculado para incendiar la vivienda.",
+          "El deseo deliberado de quedarse a oscuras para intentar huir.",
+          "Un descuido involuntario producto del cansancio nocturno."
+        ],
+        correct: 0
+      },
+      {
+        id: "I15",
+        category: "INTERPRETACIÓN",
+        text: "¿Qué efecto tiene en la actitud de la protagonista el brutal ataque perpetrado por el huésped contra el pequeño Martín?",
+        options: [
+          "Quiebra su pasividad e impulsa una firme determinación de reaccionar.",
+          "La motiva a abandonar definitivamente a sus propios hijos en la casona.",
+          "Provoca su resignación absoluta ante la violencia del invasor.",
+          "Causa la pérdida total de sus recuerdos sobre lo ocurrido ese día."
+        ],
+        correct: 0
+      },
+      {
+        id: "I16",
+        category: "INTERPRETACIÓN",
+        text: "¿En qué sentimiento o valor se fundamenta la alianza entre la protagonista y Guadalupe para enfrentar al huésped?",
+        options: [
+          "En el odio compartido hacia la amenaza y la necesidad de proteger a sus hijos.",
+          "En el beneficio económico mutuo que obtendrían al quedarse con la casona.",
+          "En el resentimiento hacia el esposo por sus ausencias prolongadas.",
+          "En el temor de Guadalupe a ser despedida de su trabajo doméstico."
+        ],
+        correct: 0
+      },
+      {
+        id: "I17",
+        category: "INTERPRETACIÓN",
+        text: "En la frase «el afecto y las palabras se habían agotado», ¿qué sentido expresa la palabra «agotado»?",
+        options: [
+          "Consumido o extinguido por completo.",
+          "Aumentado paulatinamente con el tiempo.",
+          "Ocultado temporalmente ante los demás.",
+          "Renovado a raíz de las dificultades."
+        ],
+        correct: 0
+      },
+      {
+        id: "I18",
+        category: "INTERPRETACIÓN",
+        text: "¿Qué función cumple en la narración el viaje de veinte días realizado por el esposo hacia la ciudad?",
+        options: [
+          "Ofrece la oportunidad y el tiempo necesario para ejecutar el plan de encierro.",
+          "Señala el momento exacto en que la paz regresa definitivamente a la familia.",
+          "Provoca la llegada de nuevos personajes extraños a la casa.",
+          "Muestra la búsqueda de ayuda profesional por parte del marido."
+        ],
+        correct: 0
+      },
+      {
+        id: "I19",
+        category: "INTERPRETACIÓN",
+        text: "¿Por qué el hábito del huésped de comer únicamente carne refuerza la atmósfera amenazante en el hogar?",
+        options: [
+          "Porque evoca la conducta instintiva y peligrosa de un ser depredador.",
+          "Porque demuestra una disciplina nutricional estricta e inofensiva.",
+          "Porque generaba un gasto desmedido en el presupuesto familiar.",
+          "Porque Guadalupe no sabía cocinar platillos a base de carne."
+        ],
+        correct: 0
+      },
+      {
+        id: "I20",
+        category: "INTERPRETACIÓN",
+        text: "¿Qué rasgo físico del huésped acentúa la constante sensación de vigilancia y acoso sobre la familia?",
+        options: [
+          "Sus ojos grandes, amarillentos y fijamente abiertos sin parpadear.",
+          "Sus manos pequeñas y temblorosas al desplazarse por el corredor.",
+          "Su voz suave y constante que resonaba en las noches.",
+          "Su vestimenta oscura y desgastada por el paso del tiempo."
+        ],
+        correct: 0
+      },
+      {
+        id: "I21",
+        category: "INTERPRETACIÓN",
+        text: "¿Por qué la protagonista mantiene abierta la puerta de su alcoba durante la noche a pesar del pavor que siente?",
+        options: [
+          "Para evitar la desconfianza y los reproches de su esposo al llegar tarde.",
+          "Porque el huésped se lo exigía expresamente como norma de la casona.",
+          "Para permitir la circulación del aire proveniente del jardín central.",
+          "Con el fin de que sus hijos pudieran salir a jugar de madrugada."
+        ],
+        correct: 0
+      },
+      {
+        id: "I22",
+        category: "INTERPRETACIÓN",
+        text: "Al finalizar la historia, ¿por qué las mujeres esperan dos días adicionales antes de abrir la habitación clausurada?",
+        options: [
+          "Para asegurarse de que la amenaza haya concluido definitivamente.",
+          "Porque no encontraban las herramientas necesarias para desclavar las tablas.",
+          "Debido a que preferían esperar el regreso del esposo para abrir la puerta.",
+          "Para permitir que el huésped tuviera tiempo de recuperarse y salir libre."
+        ],
+        correct: 0
+      }
+    ];
+
+    // III. REFLEXIÓN (8 preguntas)
+    const REFLEXION_QUESTIONS = [
+      {
+        id: "R23",
+        category: "REFLEXIÓN",
+        text: "¿Qué dilema ético se evidencia en la decisión de la protagonista y Guadalupe de dejar morir al huésped por inanición?",
+        options: [
+          "Muestra el dilema entre la autodefensa y la eliminación de una amenaza, porque las mujeres recurren a una medida extrema ante la ausencia de ayuda familiar.",
+          "Evidencia una falta de respeto hacia la autoridad del esposo, porque debieron consultar su opinión antes de tomar decisiones sobre el huésped.",
+          "Demuestra que actuaron motivadas únicamente por la crueldad, ya que el invasor jamás provocó daños físicos a los integrantes del hogar.",
+          "Señala un incumplimiento de los deberes domésticos, debido a que descuidaron la atención de los niños por dedicar tiempo a clavar las maderas."
+        ],
+        correct: 0
+      },
+      {
+        id: "R24",
+        category: "REFLEXIÓN",
+        text: "A partir de la reacción del esposo ante las peticiones de ayuda de su esposa, ¿qué problemática relacional invita a criticar el texto?",
+        options: [
+          "La invalidación del dolor y el miedo de la mujer, porque el marido minimiza sus advertencias llamándola exagerada y defendiendo al huésped.",
+          "La dificultad de sostener matrimonios a distancia, debido a que los viajes de negocios destruyen el afecto entre los cónyuges.",
+          "La importancia de aplicar sanciones estrictas en el hogar, ya que la esposa no lograba mantener el orden de la casa.",
+          "El valor de la resignación femenina, pues la protagonista debió aceptar pacíficamente la compañía impuesta por su marido."
+        ],
+        correct: 0
+      },
+      {
+        id: "R25",
+        category: "REFLEXIÓN",
+        text: "Respecto a la relación entre la protagonista y Guadalupe, ¿qué aspecto sobre la solidaridad femenina muestra la obra?",
+        options: [
+          "La construcción de una alianza basada en la empatía y la protección mutua, ya que ambas unieron sus fuerzas para defender a sus hijos de una amenaza común.",
+          "La sumisión incondicional de las trabajadoras, porque Guadalupe actuó siguiendo únicamente las órdenes impuestas por su patrona.",
+          "El predominio del interés económico en el trabajo doméstico, pues la empleada colaboró para mantener su puesto laboral.",
+          "La rivalidad disimulada en el ámbito del hogar, puesto que ambos personajes competían por el control de la casa."
+        ],
+        correct: 0
+      },
+      {
+        id: "R26",
+        category: "REFLEXIÓN",
+        text: "¿Qué crítica social se sugiere respecto a la vida de la protagonista antes de la llegada del invasor?",
+        options: [
+          "La opresión y aislamiento vividos por la mujer en el espacio doméstico, ya que vivía donde su bienestar era ignorado.",
+          "La desventaja de vivir en pueblos alejados de la capital, porque los habitantes del campo carecen de cultura y educación.",
+          "La falta de oportunidades laborales masculinas, debido a que el esposo debía realizar largos viajes para sostener el hogar.",
+          "La necesidad de contratar más personal de servicio, puesto que la casona requería mayor trabajo para mantenerse limpia."
+        ],
+        correct: 0
+      },
+      {
+        id: "R27",
+        category: "REFLEXIÓN",
+        text: "¿Qué representa el «huésped» y cómo se relaciona con la incomodidad o tensión que se vive en el hogar?",
+        options: [
+          "La violencia psicológica y la amenaza implícita, ya que su presencia perturba la salud mental y extingue la tranquilidad del espacio familiar.",
+          "Una representación de mala suerte económica, debido a que su llegada coincidió con las dificultades financieras del esposo.",
+          "Una metáfora (comparación) de la vejez y el deterioro físico, puesto que requería estar en lugares oscuros para descansar.",
+          "Un recurso gracioso dentro del relato, ya que el miedo que generaba en los personajes resulta desproporcionado."
+        ],
+        correct: 0
+      },
+      {
+        id: "R28",
+        category: "REFLEXIÓN",
+        text: "¿Qué reflexión sobre el miedo constante aporta la transformación de las mujeres a lo largo del relato?",
+        options: [
+          "Muestra cómo el temor sostenido altera la vida cotidiana, porque obliga a habituarse al miedo hasta llegar a una respuesta violenta.",
+          "Demuestra que el miedo es un sentimiento fugaz, ya que los niños continuaron jugando con normalidad a pesar de la presencia del ser.",
+          "Enseña que sentir temor es un rasgo de cobardía, pues las personas valientes nunca se dejan afectar por amenazas externas.",
+          "Indica que el peligro está solo en la imaginación, ya que la criatura jamás mostró intenciones de agredir a los habitantes."
+        ],
+        correct: 0
+      },
+      {
+        id: "R29",
+        category: "REFLEXIÓN",
+        text: "¿Qué juicio se puede hacer sobre la decisión de las mujeres de mentirle al esposo al decir que fue una «muerte repentina»?",
+        options: [
+          "Es un acto de complicidad defensiva, porque revelar la verdad las habría expuesto al castigo e incomprensión de quien siempre las desprotegió.",
+          "Es una muestra de falta de honestidad e ingratitud, debido a que debieron asumir abiertamente la responsabilidad frente al dueño de casa.",
+          "Es una estrategia para pedir dinero adicional, ya que necesitaban contratar a nuevos trabajadores para limpiar el cuarto.",
+          "Es un intento irresponsable de ocultar un error, pues debieron entregar al huésped a las autoridades del pueblo."
+        ],
+        correct: 0
+      },
+      {
+        id: "R30",
+        category: "REFLEXIÓN",
+        text: "En relación con el desenlace del cuento, ¿qué mensaje deja la historia sobre la capacidad de resistencia ante el abuso o el encierro?",
+        options: [
+          "Que la falta de auxilio y el acoso constante pueden empujar a las víctimas a defenderse, porque se agotan las vías pacíficas de solución.",
+          "Que es preferible soportar pasivamente cualquier injusticia, ya que las acciones drásticas siempre traen consecuencias negativas.",
+          "Que las situaciones de conflicto se resuelven de forma natural, dado que la ausencia del esposo bastó para solucionar el problema.",
+          "Que la obediencia total a la autoridad es la clave de la convivencia, puesto que evita la ruptura del grupo familiar."
+        ],
+        correct: 0
+      }
+    ];
+
+    /* ==========================================================================
+       3. ESTADO DE LA APLICACIÓN
+       ========================================================================== */
+    let studentData = { name: "", lastname: "", course: "" };
+    let activeQuestions = []; // 20 preguntas seleccionadas
+    let userAnswers = Array(20).fill(null); // Índices seleccionados
+    let currentQuestionIndex = 0;
+    let isQuizActive = false;
+    let isBlocked = false;
+
+    /* ==========================================================================
+       4. LÓGICA DE ALEATORIEDAD Y MEZCLA (SHUFFLE)
+       ========================================================================== */
+    
+    // Algoritmo Fisher-Yates para mezclar arreglos
+    function shuffleArray(arr) {
+      const array = [...arr];
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    // Preparar el conjunto único de 20 preguntas
+    function generate20QuizQuestions() {
+      // 1. Seleccionar exactamente 5 de Localización
+      const selLoc = shuffleArray(LOCALIZACION_QUESTIONS).slice(0, 5);
+      // 2. Seleccionar exactamente 10 de Interpretación
+      const selInt = shuffleArray(INTERPRETACION_QUESTIONS).slice(0, 10);
+      // 3. Seleccionar exactamente 5 de Reflexión
+      const selRef = shuffleArray(REFLEXION_QUESTIONS).slice(0, 5);
+
+      // 4. Combinar
+      const combined = [...selLoc, ...selInt, ...selRef];
+
+      // 5. Mezclar el orden de las preguntas
+      const shuffledQuestions = shuffleArray(combined);
+
+      // 6. Para cada pregunta, mezclar sus 4 opciones y rastrear el nuevo índice de la opción correcta
+      return shuffledQuestions.map(q => {
+        const originalCorrectText = q.options[q.correct];
+        const shuffledOptions = shuffleArray(q.options);
+        const newCorrectIndex = shuffledOptions.indexOf(originalCorrectText);
+
+        return {
+          ...q,
+          options: shuffledOptions,
+          correct: newCorrectIndex
+        };
+      });
+    }
+
+    /* ==========================================================================
+       5. INICIO DE LA PRUEBA Y NAVEGACIÓN
+       ========================================================================== */
+    
+    function startQuiz(e) {
+      e.preventDefault();
+      
+      studentData.name = document.getElementById('student-name').value.trim();
+      studentData.lastname = document.getElementById('student-lastname').value.trim();
+      studentData.course = document.getElementById('student-course').value;
+
+      if (!studentData.name || !studentData.lastname || !studentData.course) {
+        alert("Por favor completa todos los campos requeridos.");
+        return;
+      }
+
+      // Generar 20 preguntas aleatorias
+      activeQuestions = generate20QuizQuestions();
+      userAnswers = Array(20).fill(null);
+      currentQuestionIndex = 0;
+      isQuizActive = true;
+      isBlocked = false;
+
+      // Actualizar UI
+      document.getElementById('quiz-student-display').textContent = `${studentData.name} ${studentData.lastname} (${studentData.course})`;
+      
+      document.getElementById('welcome-screen').classList.add('hidden');
+      document.getElementById('quiz-screen').classList.remove('hidden');
+
+      renderQuestionGrid();
+      renderCurrentQuestion();
+
+      // Iniciar escucha anti-copia
+      initAntiCheatListeners();
+    }
+
+    function renderQuestionGrid() {
+      const grid = document.getElementById('question-grid');
+      grid.innerHTML = "";
+
+      for (let i = 0; i < 20; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.onclick = () => jumpToQuestion(i);
+        btn.className = `w-7 h-7 rounded-lg text-xs font-bold transition flex items-center justify-center border ${getGridBtnClass(i)}`;
+        btn.textContent = i + 1;
+        grid.appendChild(btn);
+      }
+    }
+
+    function getGridBtnClass(index) {
+      const isCurrent = index === currentQuestionIndex;
+      const isAnswered = userAnswers[index] !== null;
+
+      if (isCurrent) {
+        return "bg-amber-500 text-slate-950 border-amber-400 ring-2 ring-amber-500/50";
+      } else if (isAnswered) {
+        return "bg-slate-800 text-amber-400 border-amber-500/40";
+      } else {
+        return "bg-gothic-950 text-slate-500 border-slate-800 hover:border-slate-700";
+      }
+    }
+
+    function renderCurrentQuestion() {
+      const q = activeQuestions[currentQuestionIndex];
+
+      // Actualizar número y categoría
+      document.getElementById('current-q-num').textContent = currentQuestionIndex + 1;
+      
+      const badge = document.getElementById('category-badge');
+      badge.textContent = q.category;
+      
+      if (q.category === "LOCALIZACIÓN") {
+        badge.className = "px-3 py-1.5 rounded-lg border text-xs font-semibold uppercase tracking-wider bg-amber-500/10 border-amber-500/30 text-amber-400";
+      } else if (q.category === "INTERPRETACIÓN") {
+        badge.className = "px-3 py-1.5 rounded-lg border text-xs font-semibold uppercase tracking-wider bg-purple-500/10 border-purple-500/30 text-purple-400";
+      } else {
+        badge.className = "px-3 py-1.5 rounded-lg border text-xs font-semibold uppercase tracking-wider bg-emerald-500/10 border-emerald-500/30 text-emerald-400";
+      }
+
+      // Barra de progreso
+      const progressPercent = ((currentQuestionIndex + 1) / 20) * 100;
+      document.getElementById('progress-bar-fill').style.width = `${progressPercent}%`;
+
+      // Cita textual si es Localización
+      const quoteBox = document.getElementById('quote-container');
+      if (q.quote) {
+        document.getElementById('quote-text').textContent = q.quote;
+        quoteBox.classList.remove('hidden');
+      } else {
+        quoteBox.classList.add('hidden');
+      }
+
+      // Enunciado
+      document.getElementById('question-text').textContent = q.text;
+
+      // Renderizar Opciones (Sin letras A, B, C, D)
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = "";
+
+      q.options.forEach((optText, optIdx) => {
+        const isSelected = userAnswers[currentQuestionIndex] === optIdx;
+        
+        const optBtn = document.createElement('button');
+        optBtn.type = 'button';
+        optBtn.onclick = () => selectOption(optIdx);
+        
+        optBtn.className = `w-full text-left p-4 rounded-xl border transition-all flex items-start space-x-3 text-sm leading-relaxed ${
+          isSelected 
+            ? 'bg-amber-500/15 border-amber-500 text-amber-200 font-medium ring-1 ring-amber-500/40 shadow-lg' 
+            : 'bg-gothic-950 border-slate-800 text-slate-300 hover:border-slate-700 hover:bg-slate-800/40'
+        }`;
+
+        optBtn.innerHTML = `
+          <span class="w-5 h-5 rounded-full border flex-shrink-0 flex items-center justify-center mt-0.5 ${
+            isSelected ? 'border-amber-400 bg-amber-500 text-slate-950' : 'border-slate-600 bg-gothic-900'
+          }">
+            ${isSelected ? '<span class="w-2 h-2 rounded-full bg-slate-950"></span>' : ''}
+          </span>
+          <span class="flex-grow">${optText}</span>
+        `;
+
+        optionsContainer.appendChild(optBtn);
+      });
+
+      // Estado de botones de navegación
+      document.getElementById('btn-prev').disabled = currentQuestionIndex === 0;
+
+      const btnNextText = document.getElementById('btn-next-text');
+      if (currentQuestionIndex === 19) {
+        btnNextText.textContent = "Finalizar Evaluación";
+      } else {
+        btnNextText.textContent = "Siguiente";
+      }
+
+      renderQuestionGrid();
+    }
+
+    function selectOption(optionIndex) {
+      if (!isQuizActive) return;
+      userAnswers[currentQuestionIndex] = optionIndex;
+      renderCurrentQuestion();
+    }
+
+    function navigateQuestion(direction) {
+      if (direction === 1 && currentQuestionIndex === 19) {
+        confirmAndSubmitQuiz();
+        return;
+      }
+      const newIdx = currentQuestionIndex + direction;
+      if (newIdx >= 0 && newIdx < 20) {
+        currentQuestionIndex = newIdx;
+        renderCurrentQuestion();
+      }
+    }
+
+    function jumpToQuestion(index) {
+      if (index >= 0 && index < 20) {
+        currentQuestionIndex = index;
+        renderCurrentQuestion();
+      }
+    }
+
+    /* ==========================================================================
+       6. SISTEMA ANTI-COPIA (DETECCIÓN DE CAMBIO DE PESTAÑA O BLUR)
+       ========================================================================== */
+    
+    function initAntiCheatListeners() {
+      window.addEventListener('blur', handleAntiCheatEvent);
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+    }
+
+    function removeAntiCheatListeners() {
+      window.removeEventListener('blur', handleAntiCheatEvent);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    }
+
+    function handleVisibilityChange() {
+      if (isQuizActive && (document.hidden || document.visibilityState === 'hidden')) {
+        triggerBlockQuiz();
+      }
+    }
+
+    function handleAntiCheatEvent() {
+      if (isQuizActive) {
+        triggerBlockQuiz();
+      }
+    }
+
+    function triggerBlockQuiz() {
+      if (!isQuizActive || isBlocked) return;
+      
+      isQuizActive = false;
+      isBlocked = true;
+      removeAntiCheatListeners();
+
+      // Calcular puntaje parcial hasta el momento
+      const score = calculateScore();
+      const grade = GRADE_SCALE[score] || "2.0";
+      const answeredCount = userAnswers.filter(a => a !== null).length;
+
+      // Ocultar Quiz y Mostrar Bloqueo
+      document.getElementById('quiz-screen').classList.add('hidden');
+      
+      document.getElementById('blocked-student-name').textContent = `${studentData.name} ${studentData.lastname}`;
+      document.getElementById('blocked-student-course').textContent = studentData.course;
+      document.getElementById('blocked-answered-count').textContent = answeredCount;
+      document.getElementById('blocked-grade').textContent = grade;
+      
+      document.getElementById('blocked-screen').classList.remove('hidden');
+
+      // Enviar registro de bloqueo
+      sendDataToGoogleSheets({
+        fecha: new Date().toLocaleString("es-CL"),
+        nombre: studentData.name,
+        apellido: studentData.lastname,
+        curso: studentData.course,
+        puntaje: score,
+        nota: grade,
+        estado: "BLOQUEADO (Salió del examen)",
+        respuestasContestadas: `${answeredCount}/20`
+      });
+    }
+
+    /* ==========================================================================
+       7. CÁLCULO DE RESULTADOS Y ENVÍO A GOOGLE SHEETS
+       ========================================================================== */
+    
+    function calculateScore() {
+      let correctCount = 0;
+      activeQuestions.forEach((q, idx) => {
+        if (userAnswers[idx] !== null && userAnswers[idx] === q.correct) {
+          correctCount++;
+        }
+      });
+      return correctCount;
+    }
+
+    function confirmAndSubmitQuiz() {
+      const unansweredCount = userAnswers.filter(a => a === null).length;
+      
+      if (unansweredCount > 0) {
+        const confirmSubmit = window.confirm(`Tienes ${unansweredCount} pregunta(s) sin responder. ¿Deseas finalizar la evaluación de todos modos?`);
+        if (!confirmSubmit) return;
+      }
+
+      finishQuiz();
+    }
+
+    function finishQuiz() {
+      if (!isQuizActive) return;
+      
+      isQuizActive = false;
+      removeAntiCheatListeners();
+
+      const score = calculateScore();
+      const grade = GRADE_SCALE[score] || "2.0";
+
+      document.getElementById('quiz-screen').classList.add('hidden');
+      
+      document.getElementById('res-student-name').textContent = `${studentData.name} ${studentData.lastname}`;
+      document.getElementById('res-student-course').textContent = studentData.course;
+      document.getElementById('res-score').textContent = score;
+      document.getElementById('res-grade').textContent = grade;
+
+      renderScaleTableGrid(score);
+
+      document.getElementById('results-screen').classList.remove('hidden');
+
+      // Enviar resultados finales
+      sendDataToGoogleSheets({
+        fecha: new Date().toLocaleString("es-CL"),
+        nombre: studentData.name,
+        apellido: studentData.lastname,
+        curso: studentData.course,
+        puntaje: score,
+        nota: grade,
+        estado: "COMPLETADO",
+        respuestasContestadas: "20/20"
+      });
+    }
+
+    function renderScaleTableGrid(userScore) {
+      const grid = document.getElementById('scale-table-grid');
+      grid.innerHTML = "";
+
+      for (let pts = 0; pts <= 20; pts++) {
+        const isUserScore = pts === userScore;
+        const item = document.createElement('div');
+        item.className = `p-1.5 rounded-lg border flex flex-col items-center ${
+          isUserScore 
+            ? 'bg-amber-500/20 border-amber-400 text-amber-300 font-bold ring-1 ring-amber-400' 
+            : 'bg-gothic-900 border-slate-800 text-slate-400'
+        }`;
+
+        item.innerHTML = `
+          <span class="text-[9px] text-slate-500 uppercase">${pts} pts</span>
+          <span class="text-xs ${isUserScore ? 'text-amber-300 font-extrabold' : 'text-slate-200'}">${GRADE_SCALE[pts]}</span>
+        `;
+        grid.appendChild(item);
+      }
+    }
+
+    /* ==========================================================================
+       8. INTEGRACIÓN CON GOOGLE APPS SCRIPT
+       ========================================================================== */
+    
+    function sendDataToGoogleSheets(payload) {
+      if (!SCRIPT_URL) {
+        console.warn("SCRIPT_URL no está configurada. No se enviaron datos.");
+        return;
+      }
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(() => console.log("Datos enviados correctamente."))
+      .catch(err => console.error("Error al enviar a Google Sheets:", err));
+    }
+
+    function toggleConfigModal() {
+      const modal = document.getElementById('config-modal');
+      const input = document.getElementById('script-url-input');
+      input.value = SCRIPT_URL;
+      modal.classList.toggle('hidden');
+    }
+
+    function saveConfigUrl() {
+      const input = document.getElementById('script-url-input').value.trim();
+      SCRIPT_URL = input;
+      localStorage.setItem('GUEST_QUIZ_SCRIPT_URL', SCRIPT_URL);
+      toggleConfigModal();
+    }
+  </script>
+</body>
+</html>
